@@ -1,1 +1,9 @@
-tdd cardGame
+test cases:
+1. 2S and AD
+2. 2S 3D and 3C 4D
+3. 4D 2S and 3C 4D
+4. 2S AD and 2S 2S
+5. 2D 3D 4S 5D 9S and 2D 6D 7H 9D AS
+6. 2D 3S 7H 8S AD and 2D 6S 4D 5D 5D
+7. 2D 2D 4D 5D AD and 2D 2D 4D 5D 5D
+8. 2D 2D 4D 4D 9D and 2D 2D 2D 3S 5D 
