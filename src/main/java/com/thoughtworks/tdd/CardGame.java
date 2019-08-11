@@ -55,8 +55,10 @@ public class CardGame {
                 if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())&&cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
                     if(getIndex(cards1.get(i).getNumber())>getIndex(cards2.get(j).getNumber())){
                         return  result+="card1 won";
+                    }else if(getIndex(cards1.get(i).getNumber())<getIndex(cards2.get(j).getNumber())){
+                        result+="card2 won";
                     }
-                    result+="card2 won";
+                    return result+="平局";
                 }else if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())){
                     return  result+="card1 won";
                 }else if(cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
