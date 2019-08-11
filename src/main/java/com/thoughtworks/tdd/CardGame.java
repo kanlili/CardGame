@@ -39,6 +39,7 @@ public class CardGame {
     }
     public String compareMutipCard(List<Card> cards1, List<Card> cards2) {
         String result="";
+        int count=0;
         List<Integer>cards1index=new ArrayList<>();
         List<Integer>cards2index=new ArrayList<>();
         sortFromSmallIndex(cards1);
@@ -51,18 +52,30 @@ public class CardGame {
         }
         for(int i=cards1index.size()-1;i>0;i--){
             for(int j=cards2index.size()-1;j>0;j--){
-
-                if(cards1index.get(i)>cards2index.get(j)){
+                if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())&&cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
+                    if(getIndex(cards1.get(i).getNumber())>getIndex(cards2.get(j).getNumber())){
+                        return  result+="card1 won";
+                    }
+                    result+="card2 won";
+                }else if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())){
                     return  result+="card1 won";
-                }else if(cards1index.get(i)==cards2index.get(j)){
+                }else if(cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
+                    result+="card2 won";
+                }else{
+                   if(cards1index.get(i)>cards2index.get(j)){
+                    return  result+="card1 won";
+                   }else if(cards1index.get(i)==cards2index.get(j)){
+
                     if(cards1index.get(i-1)>cards2index.get(j-1)){
                         return  result+="card1 won";
                     }else if(cards1index.get(i-1)<cards2index.get(j-1)){
                         return  result+="card2 won";
                     }
                     return result+="平局";
+                  }
+                    result+="card2 won";
                 }
-                result+="card2 won";
+
             }
         }
        return  result;
