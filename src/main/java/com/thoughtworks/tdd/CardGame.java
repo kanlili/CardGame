@@ -1,6 +1,8 @@
 package com.thoughtworks.tdd;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CardGame {
 
@@ -13,6 +15,15 @@ public class CardGame {
         }
         return  -1;
     }
+    public int sortFromSmallIndex(List<Card>card){
+        List<Integer>numberList=new ArrayList<>();
+        for(Card card1:card) {
+          numberList.add(getIndex(card1.getNumber()));
+        }
+        numberList.stream().sorted().collect(Collectors.toList());
+        int max=numberList.get(numberList.size()-1);
+        return max;
+    }
     public String compareCard(Card card1, Card card2) {
         String result1="";
         if(getIndex(card1.getNumber())>getIndex(card2.getNumber())){
@@ -24,8 +35,13 @@ public class CardGame {
         }
         return result1;
     }
-
     public String compareMutipCard(List<Card> cards1, List<Card> cards2) {
-        return null;
+        String result="";
+        if(sortFromSmallIndex(cards1)>sortFromSmallIndex(cards2)){
+            return  result+="card1 won";
+        }else if(sortFromSmallIndex(cards1)<sortFromSmallIndex(cards2)){
+            return  result+="card2 won";
+        }
+        return  "平局";
     }
 }
