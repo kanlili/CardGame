@@ -15,8 +15,10 @@ public class CardGame {
         String result1="";
         if(getIndex(card1.getNumber())>getIndex(card2.getNumber())){
             return result1+= "card1 won";
-        }else{
+        }else if(getIndex(card1.getNumber())<getIndex(card2.getNumber())){
             result1+="card2 won";
+        }else{
+            result1+="平局";
         }
         return result1;
     }
