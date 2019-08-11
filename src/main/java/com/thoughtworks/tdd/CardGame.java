@@ -27,23 +27,19 @@ public class CardGame {
         return cardList;
     }
     public String compareCard(Card card1, Card card2) {
-        String result1="";
-        if(getIndex(card1.getNumber())>getIndex(card2.getNumber())){
-            return result1+= "card1 won";
-        }else if(getIndex(card1.getNumber())<getIndex(card2.getNumber())){
-            result1+="card2 won";
-        }else{
-            result1+="平局";
-        }
-        return result1;
+        return getIndex(card1.getNumber())==getIndex(card2.getNumber())?  "平局" :
+                (getIndex(card1.getNumber())>getIndex(card2.getNumber())?  "card1 won" : "card2 won" );
+
+    }
+    private void sortFromsmallIndex(List<Card> cards1, List<Card> cards2) {
+        sortFromSmallIndex(cards1);
+        sortFromSmallIndex(cards2);
     }
     public String compareMutipCard(List<Card> cards1, List<Card> cards2) {
         String result="";
-        int count=0;
+        sortFromsmallIndex(cards1, cards2);
         List<Integer>cards1index=new ArrayList<>();
         List<Integer>cards2index=new ArrayList<>();
-        sortFromSmallIndex(cards1);
-        sortFromSmallIndex(cards2);
         for(Card card:cards1){
             cards1index.add(getIndex(card.getNumber()));
         }
@@ -53,12 +49,8 @@ public class CardGame {
         for(int i=cards1index.size()-1;i>0;i--){
             for(int j=cards2index.size()-1;j>0;j--){
                 if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())&&cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
-                    if(getIndex(cards1.get(i).getNumber())>getIndex(cards2.get(j).getNumber())){
-                        return  result+="card1 won";
-                    }else if(getIndex(cards1.get(i).getNumber())<getIndex(cards2.get(j).getNumber())){
-                        result+="card2 won";
-                    }
-                    return result+="平局";
+                    return  getIndex(cards1.get(i).getNumber())==getIndex(cards2.get(j).getNumber()) ? "平局":
+                            (getIndex(cards1.get(i).getNumber())>getIndex(cards2.get(j).getNumber()) ? "card1 won": "card2 won" );
                 }else if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())){
                     return  result+="card1 won";
                 }else if(cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
@@ -67,13 +59,8 @@ public class CardGame {
                    if(cards1index.get(i)>cards2index.get(j)){
                     return  result+="card1 won";
                    }else if(cards1index.get(i)==cards2index.get(j)){
-
-                    if(cards1index.get(i-1)>cards2index.get(j-1)){
-                        return  result+="card1 won";
-                    }else if(cards1index.get(i-1)<cards2index.get(j-1)){
-                        return  result+="card2 won";
-                    }
-                    return result+="平局";
+                    return cards1index.get(i-1)==cards2index.get(j-1) ? "平局":
+                            (cards1index.get(i-1)>cards2index.get(j-1) ? "card1 won": "card2 won");
                   }
                     result+="card2 won";
                 }
@@ -82,4 +69,6 @@ public class CardGame {
         }
        return  result;
     }
+
+
 }
