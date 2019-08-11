@@ -54,7 +54,7 @@ public class CardGame {
                 }else if(cards1.get(i).getNumber().equals(cards1.get(i-1).getNumber())){
                     return  result+="card1 won";
                 }else if(cards2.get(j).getNumber().equals(cards2.get(j-1).getNumber())){
-                     result+="card2 won";
+                    return result+="card2 won";
                 }else{
                    if(cards1index.get(i)>cards2index.get(j)){
                     return  result+="card1 won";
