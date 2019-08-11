@@ -42,4 +42,16 @@ public class CardGameTest {
         String result=cardGame.compareMutipCard(cards1,cards2);
         Assertions.assertEquals("card2 won",result);
     }
+    @Test
+    public void should_return_card2won_when_call_function_given_2SAD_2S2S(){
+        List<Card>cards1= new ArrayList<>();
+        cards1.add(new Card("2S"));
+        cards1.add(new Card("AD"));
+        List<Card>cards2= new ArrayList<>();
+        cards2.add(new Card("2S"));
+        cards2.add(new Card("2S"));
+        CardGame cardGame=new CardGame();
+        String result=cardGame.compareMutipCard(cards1,cards2);
+        Assertions.assertEquals("card2 won",result);
+    }
 }
