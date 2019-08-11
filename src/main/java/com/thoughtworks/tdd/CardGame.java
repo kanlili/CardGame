@@ -1,5 +1,7 @@
 package com.thoughtworks.tdd;
 
+import java.util.List;
+
 public class CardGame {
 
     private  static  String []cardNumber=new String[]{"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
@@ -21,5 +23,9 @@ public class CardGame {
             result1+="平局";
         }
         return result1;
+    }
+
+    public String compareMutipCard(List<Card> cards1, List<Card> cards2) {
+        return null;
     }
 }
